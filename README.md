@@ -1,2 +1,8 @@
-# college-fifthsem-minor1
-This is the repository maintained for the progress of the work done each day in the minor project 1 and the title of the Project is "AUTOMATED CRYPTOGRAPHIC FILE TRANSFER".
+# Project Title:- "AUTOMATED CRYPTOGRAPHIC FILE TRANSFER"
+
+
+# Aim of the repository
+This is the repository maintained for the progress report of the work done in the each day in the Minor Project 1.
+
+
+# Problem Statement
