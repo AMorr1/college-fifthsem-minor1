@@ -19,7 +19,7 @@ The client-side is always vulnerable to threat attacks, or unauthorized access. 
 4) Process the datagram packet and send a reply to client.
 5) Go back to Step 3.
 
-                                                 Stages for server:-
+                                                  Stages for server:-
 
 
 1) Socket creation:
@@ -63,7 +63,7 @@ int new_socket= accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
 It extracts the first connection request on the queue of pending connections for the listening socket, sockfd, creates a new connected socket, and returns a new file descriptor referring to that socket. At this point, connection is established between client and server, and they are ready to transfer data.
 
 
-                                                                              Necessary Functions :
+                                                     Necessary Functions :
 
 int socket(int domain, int type, int protocol)
 
@@ -71,7 +71,7 @@ Creates an unbound socket in the specified domain.
 
 Returns socket file descriptor.
 
-                                                                                     Arguments :
+                                                         Arguments :
 
 1) domain – Specifies the communication
    
