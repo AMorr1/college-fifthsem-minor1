@@ -53,3 +53,67 @@ int sendFile(FILE *fp, char *buf, int s)
     }
     return 0;
 }
+// driver code
+int main()
+{
+    int sockfd, nBytes;
+    struct sockaddr_in addr_con;
+    int addrlen = sizeof(addr_con);
+    addr_con.sin_family = AF_INET;
+    addr_con.sin_port = htons(PORT_NO);
+    addr_con.sin_addr.s_addr = INADDR_ANY;
+    char net_buf[NET_BUF_SIZE];
+    FILE *fp;
+
+    // socket()
+    sockfd = socket(AF_INET, SOCK_DGRAM, IP_PROTOCOL);
+
+    // bind()
+    if (bind(sockfd, (struct sockaddr *)&addr_con, sizeof(addr_con)) == 0)
+        printf("\n");
+    else
+        printf("\nError\n");
+
+    printf("\n Server Running on PORT NO. %d \n", PORT_NO);
+    printf("\n----------------------------------\n");
+    while (1)
+    {
+
+        // receive file name
+        clearBuf(net_buf);
+
+        nBytes = recvfrom(sockfd, net_buf,
+                          NET_BUF_SIZE, sendrecvflag,
+                          (struct sockaddr *)&addr_con, &addrlen);
+
+        fp = fopen(net_buf, "r"); //source
+    
+        printf("File copied successfully.\n");
+        printf("\nFile Named %s is received\n", net_buf);
+        if (fp == NULL)
+        else
+            printf("\n");
+
+        while (1)
+        {
+
+            // process
+            if (sendFile(fp, net_buf, NET_BUF_SIZE))
+            {
+                sendto(sockfd, net_buf, NET_BUF_SIZE,
+                       sendrecvflag,
+                       (struct sockaddr *)&addr_con, addrlen);
+                break;
+            }
+
+            // send
+            sendto(sockfd, net_buf, NET_BUF_SIZE,
+                   sendrecvflag,
+                   (struct sockaddr *)&addr_con, addrlen);
+            clearBuf(net_buf);
+        }
+        if (fp != NULL)
+            fclose(fp);
+    }
+    return 0;
+}
