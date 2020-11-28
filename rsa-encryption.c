@@ -12,16 +12,6 @@ void ce();
 long int cd(long int); 
 void encrypt(); 
 void decrypt();
-
-
-
-
-	
-
-
-
-
-
 void main() {
 
  
