@@ -11,10 +11,8 @@ void ce();
 long int cd(long int); 
 void encrypt(); 
 void decrypt();
-
 void main() {
- 
-	FILE *fpp = fopen("cipher.txt", "a+");
+ FILE *fpp = fopen("cipher.txt", "a+");
     fscanf(fpp, "%d\n%d\n", &p, &q);
 	printf("Reading content from file :-  cipher.txt\n ***********************************************************************\n\n");
 	fscanf(fpp, "%s", en);
